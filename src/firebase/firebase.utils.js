@@ -1,0 +1,24 @@
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
+import 'firebase/compat/firestore'
+
+const config = {
+  apiKey: 'AIzaSyDO5EFdzJN1f3n2Xi6JzI3oputL4YMc8xk',
+  authDomain: 'second-e-ecommerce.firebaseapp.com',
+  projectId: 'second-e-ecommerce',
+  storageBucket: 'second-e-ecommerce.appspot.com',
+  messagingSenderId: '278945685146',
+  appId: '1:278945685146:web:f02fd70f9139631412c923',
+  measurementId: 'G-P2LTZ38VX5',
+}
+
+firebase.initializeApp(config)
+
+export const auth = firebase.auth()
+export const firestore = firebase.firestore()
+
+const provider = new firebase.auth.GoogleAuthProvider()
+provider.setCustomParameters({ prompt: 'select_account' })
+export const signInWithGoogle = () => auth.signInWithPopup(provider)
+
+export default firebase
